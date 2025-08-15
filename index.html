@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OfferteSnel</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>OfferteSnel</h1>
+      <p class="sub">Maak in 1 minuut een nette offerte met AI-intro en PDF-download.</p>
+    </header>
+
+    <section class="card">
+      <h2>Gegevens</h2>
+      <div class="grid">
+        <label>Bedrijf
+          <input id="company" placeholder="Maas Metaal" />
+        </label>
+        <label>Klantnaam
+          <input id="client" placeholder="Piet Hendriks" />
+        </label>
+      </div>
+      <div class="grid">
+        <label>Omschrijving klus
+          <input id="description" placeholder="RVS bedframe" />
+        </label>
+      </div>
+      <div class="grid">
+        <label>Uren
+          <input id="hours" type="number" min="0" step="0.5" value="4" />
+        </label>
+        <label>Uurtarief (€)
+          <input id="rate" type="number" min="0" step="1" value="60" />
+        </label>
+        <label>Marge (%)
+          <input id="margin" type="number" min="0" step="1" value="10" />
+        </label>
+        <label>BTW (%)
+          <input id="vat" type="number" min="0" step="1" value="21" />
+        </label>
+      </div>
+
+      <h3>Regels (materiaal)</h3>
+      <div id="lines"></div>
+      <button id="addLine" class="ghost">+ Regel</button>
+
+      <div class="actions">
+        <button id="generate" class="primary">Genereer offerte</button>
+        <button id="download" class="secondary" disabled>Download PDF</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Voorvertoning</h2>
+      <div id="preview" class="preview">
+        <div class="head">
+          <div>
+            <div class="brand" id="p-company">Mijn bedrijfsnaam</div>
+            <div class="meta" id="p-contact">Adres · Tel · E-mail</div>
+          </div>
+        </div>
+
+        <h3>Offerte voor: <span id="p-client">–</span></h3>
+        <p>Omschrijving klus: <span id="p-description">–</span></p>
+
+        <h4>AI-intro</h4>
+        <p id="p-intro" class="intro muted">Nog niet gegenereerd.</p>
+
+        <table class="tbl">
+          <thead>
+            <tr><th>Omschrijving</th><th>Aantal</th><th>Prijs</th><th>Totaal</th></tr>
+          </thead>
+          <tbody id="p-rows"></tbody>
+        </table>
+
+        <div class="totals">
+          <div>Uren: <span id="p-hours">0</span> × €<span id="p-rate">0</span></div>
+          <div>Subtotaal excl. btw: €<span id="p-ex">0,00</span></div>
+          <div>BTW: €<span id="p-tax">0,00</span></div>
+          <div class="grand"><strong>Totaal incl. btw: €<span id="p-inc">0,00</span></strong></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>
